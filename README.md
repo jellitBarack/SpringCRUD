@@ -1,10 +1,10 @@
 # SprinigCRUD
 
 create table dbo.clientes(
-      cod_cli           int not null AUTO_INCREMENT,
-      nome_cli    varchar(80),
-      data_nasc   datetime,
-      cidade_nasc varchar(100),
+      cod_cli           int not null AUTO_INCREMENT,\
+      nome_cli    varchar(80),\
+      data_nasc   datetime,\
+      cidade_nasc varchar(100),\
       pai_cli           varchar(80),
       mae_cli           varchar(80),
       cpf_cli           varchar(14),
