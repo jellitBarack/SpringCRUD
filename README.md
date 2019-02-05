@@ -48,4 +48,5 @@ create table dbo.enderecos_clientes (
 ); 
 insert dbo.tipos_contato (desc_tipo) VALUES ('RESIDENCIAL'); 
 insert dbo.tipos_contato (desc_tipo) VALUES ('COMERCIAL'); 
-insert dbo.tipos_contato (desc_tipo) VALUES ('OUTROS'); 
+insert dbo.tipos_contato (desc_tipo) VALUES ('OUTROS');
+
