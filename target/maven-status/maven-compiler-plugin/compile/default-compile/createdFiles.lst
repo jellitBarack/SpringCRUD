@@ -1,0 +1,10 @@
+jhonattan\testeFullStack\clientes\model\TiposContato.class
+jhonattan\testeFullStack\clientes\Application.class
+jhonattan\testeFullStack\clientes\repository\ClienteRepository.class
+jhonattan\testeFullStack\clientes\repository\TiposContatoRepository.class
+jhonattan\testeFullStack\clientes\model\Cliente.class
+jhonattan\testeFullStack\clientes\model\Endereco.class
+jhonattan\testeFullStack\clientes\service\TiposContatoService.class
+jhonattan\testeFullStack\clientes\service\ClienteService.class
+jhonattan\testeFullStack\clientes\model\Telefone.class
+jhonattan\testeFullStack\clientes\controller\ClienteController.class

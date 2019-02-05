@@ -1,0 +1,87 @@
+<table>
+								<thead>
+									<tr>
+										<th style="display: none">ID</th>
+										<th>LOGRADOURO</th>
+										<th>CEP</th>
+										<th>CIDADE</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="endereco, itemStat : *{enderecos}">
+										<td style="display: none"><input
+											th:field="*{enderecos[__${itemStat.index}__].id}" /></td>
+										<!--  <td><select
+											th:field="*{enderecos[__${itemStat.index}__].TAG}"
+											class="form-control" id="exampleFormControlSelect1">
+												<option value="RESIDENCIAL">RESIDENCIAL</option>
+												<option value="COMERCIAL">COMERCIAL</option>
+												<option value="OUTRO">OUTRO</option>
+										</select></td>
+										-->
+
+										<td><input class="form-control"
+											th:field="*{enderecos[__${itemStat.index}__].logradouro}" /></td>
+										<td><input type="number" class="form-control"
+											th:field="*{enderecos[__${itemStat.index}__].cep}" /></td>
+										<td><input class="form-control"
+											th:field="*{enderecos[__${itemStat.index}__].cidade}" /></td>
+										<td>
+											<button type="submit" class="btn btn-default"
+												th:value="*{enderecos[__${itemStat.index}__].id}"
+												name="removeEndereco">
+												<i class="glyphicon glyphicon-trash icon-white"></i>
+											</button>
+										</td>
+
+									</tr>
+								</tbody>
+							</table>
+							
+						<div style="margin-bottom: 50px;">
+							<h2>
+								Telefones
+								<button type="submit" class="btn btn-sm btn-primary"
+									name="addTelefone">+</button>
+							</h2>
+							<table>
+								<thead>
+									<tr>
+										<th>ID</th>
+										<!-- <th>TAG</th> -->
+										<th>DDD</th>
+										<th>TELEFONE</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="telefone, itemStat : *{telefones}">
+										<td><input
+											th:field="*{telefones[__${itemStat.index}__].cod_fone}" /></td>
+										<!-- 
+										<td>
+										<select
+											th:field="*{telefones[__${itemStat.index}__].TAG}"
+											class="form-control" id="exampleFormControlSelect1">
+												<option value="RESIDENCIAL">RESIDENCIAL</option>
+												<option value="COMERCIAL">COMERCIAL</option>
+												<option value="OUTRO">OUTRO</option>
+										</select></td> -->
+										<td><input
+											th:field="*{telefones[__${itemStat.index}__].ddd_fone}"
+											class="form-control" /></td>
+										<td><input
+											th:field="*{telefones[__${itemStat.index}__].num_fone}"
+											class="form-control" /></td>
+										<td>
+											<button type="submit" class="btn btn-default"
+												th:value="*{telefones[__${itemStat.index}__].cod_fone}"
+												name="delTelefone">
+												<i class="glyphicon glyphicon-trash icon-white"></i>
+											</button>
+										</td>
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+							

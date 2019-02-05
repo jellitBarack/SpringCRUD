@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Cadastro de Usuário</title>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet"></link>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong>Cadastro de Usuario</strong>
+		</div>
+		<div class="panel-body">
+
+			<form class="form-horizontal" th:object="${usuario}"
+				th:action="@{/usuario/save}" method="POST" style="margin: 10px">
+				<div class="form-group">
+					<fieldset>
+						<div class="form-group row">
+							<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+								<div th:each="detailedError : ${#fields.detailedErrors()}">
+									<span th:text="${detailedError.message}"></span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-1">
+								<input type="text" class="form-control input-sm" id="id"
+									th:field="*{id}" readOnly="readonly" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4"
+								th:classappend="${#fields.hasErrors('nome')}? 'has-error'">
+								<label>Nome</label> <input type="text"
+									class="form-control input-sm" th:field="*{nome}"
+									autofocus="autofocus" placeholder="Informe o nome"
+									maxlength="50" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4"
+								th:classappend="${#fields.hasErrors('cpf')}? 'has-error'">
+								<label>CPF</label> <input type="number"
+									class="form-control input-sm" th:field="*{cpf}" maxlength="8"
+									placeholder="Informe o CPF" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4"
+								th:classappend="${#fields.hasErrors('mae')}? 'has-error'">
+								<label>Mãe</label> <input type="text"
+									class="form-control input-sm" th:field="*{mae}" maxlength="150"
+									placeholder="Informe o nome da mãe" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-2"
+								th:classappend="${#fields.hasErrors('dataNascimento')}? 'has-error'">
+								<label>Data Nascimento</label> <input type="date"
+									class="form-control input-sm" th:field="*{dataNascimento}" />
+							</div>
+						</div>
+
+
+
+						
+						
+						<div style="margin-bottom:50px">
+						<h2>Telefones <button type="submit" class="btn btn-sm btn-primary"
+							name="addPhone">+</button></h2>
+						<table>
+							<thead>
+								<tr>
+									<th style="display: none">ID</th>
+									<th>TAG</th>
+									<th>DDD</th>
+									<th>TELEFONE</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="telefone, itemStat : *{telefones}">
+									<td style="display: none"><input
+										th:field="*{telefones[__${itemStat.index}__].id}" /></td>
+									<td><select
+										th:field="*{telefones[__${itemStat.index}__].TAG}" class="form-control" id="exampleFormControlSelect1">
+											<option value="RESIDENCIAL">RESIDENCIAL</option>
+											<option value="COMERCIAL">COMERCIAL</option>
+											<option value="OUTRO">OUTRO</option>
+									</select></td>
+									<td><input
+										th:field="*{telefones[__${itemStat.index}__].ddd}" class="form-control" /></td>
+									<td><input
+										th:field="*{telefones[__${itemStat.index}__].telefone}" class="form-control"  /></td>
+									<td>
+										<button type="submit" class="btn btn-default"
+											th:value="*{telefones[__${itemStat.index}__].id}"
+											name="removePhone">
+											<i class="glyphicon glyphicon-trash icon-white"></i>
+										</button>
+									</td>
+
+								</tr>
+							</tbody>
+						</table>
+						</div>
+						
+						<div>
+						<h2>Endereços <button type="submit" class="btn btn-sm btn-primary"
+							name="addEndereco">+</button></h2>
+							
+							<table>
+							<thead>
+								<tr>
+									<th style="display: none">ID</th>
+									<th>TAG</th>
+									<th>LOGRADOURO</th>
+									<th>CEP</th>
+									<th>CIDADE</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="endereco, itemStat : *{enderecos}">
+									<td style="display: none"><input
+										th:field="*{enderecos[__${itemStat.index}__].id}" /></td>
+									<td><select
+										th:field="*{enderecos[__${itemStat.index}__].TAG}" class="form-control" id="exampleFormControlSelect1">
+											<option value="RESIDENCIAL">RESIDENCIAL</option>
+											<option value="COMERCIAL">COMERCIAL</option>
+											<option value="OUTRO">OUTRO</option>
+									</select></td>
+
+									<td><input class="form-control"
+										th:field="*{enderecos[__${itemStat.index}__].logradouro}" /></td>
+									<td><input type="number" class="form-control"
+										th:field="*{enderecos[__${itemStat.index}__].cep}" /></td>
+									<td><input class="form-control"
+										th:field="*{enderecos[__${itemStat.index}__].cidade}" /></td>
+									<td>
+										<button type="submit" class="btn btn-default"
+											th:value="*{enderecos[__${itemStat.index}__].id}"
+											name="removeEndereco">
+											<i class="glyphicon glyphicon-trash icon-white"></i>
+										</button>
+									</td>
+
+								</tr>
+							</tbody>
+						</table>
+						</div>
+						
+						
+						
+
+					</fieldset>
+				</div>
+				<div class="form-group row">
+					<button type="submit" class="btn btn-sm btn-primary" name="action1">Salvar</button>
+
+					<a th:href="@{/usuario}" class="btn btn-sm btn-default">Cancelar</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
