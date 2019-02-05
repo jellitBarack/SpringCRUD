@@ -12,12 +12,14 @@ create table dbo.clientes(
       data_cad    datetime default now(),
       primary key (cod_cli)
 );
+
 create table dbo.tipos_contato (
       cod_tipo    int not null AUTO_INCREMENT,
       desc_tipo   varchar(35),
       data_cad    datetime default now(),
       primary key (cod_tipo)
 );
+
 create table dbo.telefones_clientes (
       cod_fone    int not null AUTO_INCREMENT,
       cod_cli           int,
@@ -29,20 +31,21 @@ create table dbo.telefones_clientes (
       CONSTRAINT FK_tel_cli FOREIGN KEY (cod_cli) REFERENCES clientes(cod_cli),
       CONSTRAINT FK_tel_tipo FOREIGN KEY (cod_tipo) REFERENCES tipos_contato(cod_tipo)
 );
-create table dbo.enderecos_clientes (
-      cod_ende    int not null AUTO_INCREMENT,
-      cod_cli           int,
-      cod_tipo    int,
-      logradouro  varchar(80),
-      bairro            varchar(80),
-      complemento varchar(80),      
-      cidade            varchar(80),
-      cep               varchar(8),
-      data_cad    datetime default now(),
-      primary key (cod_ende),
-      CONSTRAINT FK_ende_cli FOREIGN KEY (cod_cli) REFERENCES clientes(cod_cli),
-      CONSTRAINT FK_ende_tipo FOREIGN KEY (cod_tipo) REFERENCES tipos_contato(cod_tipo)
-);
-insert dbo.tipos_contato (desc_tipo) VALUES ('RESIDENCIAL');
-insert dbo.tipos_contato (desc_tipo) VALUES ('COMERCIAL');
-insert dbo.tipos_contato (desc_tipo) VALUES ('OUTROS');
+
+create table dbo.enderecos_clientes ( 
+      cod_ende    int not null AUTO_INCREMENT, 
+      cod_cli           int, 
+      cod_tipo    int, 
+      logradouro  varchar(80), 
+      bairro            varchar(80), 
+      complemento varchar(80),       
+      cidade            varchar(80), 
+      cep               varchar(8), 
+      data_cad    datetime default now(), 
+      primary key (cod_ende), 
+      CONSTRAINT FK_ende_cli FOREIGN KEY (cod_cli) REFERENCES clientes(cod_cli), 
+      CONSTRAINT FK_ende_tipo FOREIGN KEY (cod_tipo) REFERENCES tipos_contato(cod_tipo) 
+); 
+insert dbo.tipos_contato (desc_tipo) VALUES ('RESIDENCIAL'); 
+insert dbo.tipos_contato (desc_tipo) VALUES ('COMERCIAL'); 
+insert dbo.tipos_contato (desc_tipo) VALUES ('OUTROS'); 
